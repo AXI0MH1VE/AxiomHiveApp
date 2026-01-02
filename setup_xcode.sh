@@ -33,7 +33,8 @@ fi
 echo "🔨 Generating Xcode project..."
 xcodegen generate
 
-if [ -f "AxiomHiveApp.xcodeproj/project.pbxproj" ]; then
+# Check if generation was successful
+if [ $? -eq 0 ] && [ -f "AxiomHiveApp.xcodeproj/project.pbxproj" ]; then
     echo "✅ Xcode project generated successfully!"
     echo ""
     echo "📱 Next steps:"

@@ -138,7 +138,7 @@ swift build
 swift test
 ```
 
-Note: `swift package generate-xcodeproj` was deprecated in Swift 5.4. Use `open Package.swift` or `xcodegen generate` instead.
+Note: `swift package generate-xcodeproj` was deprecated in Xcode 12 / Swift 5.4+. Use `open Package.swift` or `xcodegen generate` instead.
 
 Or using xcodebuild (requires .xcodeproj):
 
