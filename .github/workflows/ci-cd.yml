@@ -30,6 +30,15 @@ jobs:
       with:
         xcode-version: '15.2'
     
+    - name: Generate Xcode Project
+      run: |
+        if [ ! -d "AxiomHiveApp.xcodeproj" ]; then
+          echo "Generating Xcode project..."
+          python3 generate-xcode-project.py
+        else
+          echo "Xcode project already exists"
+        fi
+    
     - name: Install dependencies
       run: |
         brew install swiftlint
@@ -62,6 +71,15 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '15.2'
+    
+    - name: Generate Xcode Project
+      run: |
+        if [ ! -d "AxiomHiveApp.xcodeproj" ]; then
+          echo "Generating Xcode project..."
+          python3 generate-xcode-project.py
+        else
+          echo "Xcode project already exists"
+        fi
         
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
@@ -102,6 +120,15 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '15.2'
+    
+    - name: Generate Xcode Project
+      run: |
+        if [ ! -d "AxiomHiveApp.xcodeproj" ]; then
+          echo "Generating Xcode project..."
+          python3 generate-xcode-project.py
+        else
+          echo "Xcode project already exists"
+        fi
         
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
