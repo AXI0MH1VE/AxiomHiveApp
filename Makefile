@@ -1,7 +1,7 @@
 # Makefile for AxiomHiveApp
 # Provides convenient commands for building, testing, and managing the project
 
-.PHONY: help setup open build test clean xcode lint format
+.PHONY: help setup open build test clean xcode lint format test-unit beta release install-tools
 
 # Default target - show help
 help:

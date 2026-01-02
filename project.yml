@@ -15,7 +15,9 @@ settings:
     SWIFT_VERSION: "5.9"
     IPHONEOS_DEPLOYMENT_TARGET: "17.0"
     TARGETED_DEVICE_FAMILY: "1,2"
-    DEVELOPMENT_TEAM: ""
+    # Set DEVELOPMENT_TEAM via environment variable or configure in Xcode after generation
+    # Example: export DEVELOPMENT_TEAM="ABCD1234" before running xcodegen
+    DEVELOPMENT_TEAM: $(DEVELOPMENT_TEAM)
     CODE_SIGN_STYLE: Automatic
     ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
@@ -37,7 +39,7 @@ targets:
       base:
         INFOPLIST_FILE: AxiomHiveApp/Resources/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.AxiomHiveApp
+        # PRODUCT_BUNDLE_IDENTIFIER inherited from base settings
     scheme:
       testTargets:
         - AxiomHiveAppTests
