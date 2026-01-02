@@ -21,13 +21,19 @@ Production-grade iOS app with Swift/SwiftUI, MVVM architecture, and Axiom Hive d
    ```bash
    ./setup_xcode.sh
    ```
+   
+   Or use the Makefile:
+   ```bash
+   make setup
+   ```
 
 3. **Build and Run:**
    - Select the `AxiomHiveApp` scheme
    - Choose a simulator or device
    - Press `⌘R`
 
-📖 **Detailed setup instructions:** See [XCODE_SETUP.md](XCODE_SETUP.md)
+📖 **New to the project?** See [QUICKSTART.md](QUICKSTART.md)  
+📖 **Detailed setup:** See [XCODE_SETUP.md](XCODE_SETUP.md)
 
 ## 📋 Features
 
