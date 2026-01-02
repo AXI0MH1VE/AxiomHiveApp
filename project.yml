@@ -1,0 +1,76 @@
+name: AxiomHiveApp
+options:
+  bundleIdPrefix: com.axiomhive
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  xcodeVersion: "15.0"
+  
+settings:
+  base:
+    PRODUCT_NAME: AxiomHiveApp
+    PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.AxiomHiveApp
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    INFOPLIST_FILE: AxiomHiveApp/Resources/Info.plist
+    LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+    ENABLE_BITCODE: NO
+    SWIFT_EMIT_LOC_STRINGS: YES
+    GENERATE_INFOPLIST_FILE: NO
+
+targets:
+  AxiomHiveApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: AxiomHiveApp
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        INFOPLIST_FILE: AxiomHiveApp/Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.AxiomHiveApp
+    scheme:
+      testTargets:
+        - AxiomHiveAppTests
+      gatherCoverageData: true
+    
+  AxiomHiveAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - AxiomHiveAppTests
+    dependencies:
+      - target: AxiomHiveApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.AxiomHiveAppTests
+        BUNDLE_LOADER: $(TEST_HOST)
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/AxiomHiveApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AxiomHiveApp
+
+schemes:
+  AxiomHiveApp:
+    build:
+      targets:
+        AxiomHiveApp: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - AxiomHiveAppTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
