@@ -51,10 +51,33 @@ For a more traditional Xcode project with custom build settings:
    chmod +x setup_xcode.sh
    ./setup_xcode.sh
    ```
+   
+   Or use the Makefile:
+   ```bash
+   make setup
+   ```
 
 3. This will:
    - Generate `AxiomHiveApp.xcodeproj` from `project.yml`
    - Open the project in Xcode automatically
+
+### Method 3: Use Makefile Commands
+
+The project includes a convenient Makefile for common tasks:
+
+```bash
+# View all available commands
+make help
+
+# Setup and open project
+make setup
+
+# Just generate Xcode project
+make xcode
+
+# Open existing project
+make open
+```
 
 ## Project Structure
 
@@ -84,6 +107,26 @@ AxiomHiveApp/
 4. Build: `⌘B`
 5. Run: `⌘R`
 6. Test: `⌘U`
+
+### Using Makefile
+
+The project includes convenient Makefile commands:
+
+```bash
+# Build the project
+make build
+
+# Run tests
+make test
+
+# Clean build artifacts
+make clean
+
+# Run linter
+make lint
+```
+
+See all available commands with `make help`.
 
 ### Using Command Line
 
