@@ -175,7 +175,7 @@ if [ $FAILED_CHECKS -eq 0 ]; then
     echo -e "${GREEN}✅ All checks passed!${NC}"
     echo ""
     echo "Next steps:"
-    echo "1. Configure GitHub Secrets (see DEPLOYMENT_GUIDE.md)"
+    echo "1. Configure GitHub Secrets (see SETUP_GUIDE.md)"
     echo "2. Run: bundle install"
     echo "3. Run: fastlane test"
     echo "4. Deploy with: fastlane beta"
@@ -195,7 +195,7 @@ else
         echo "  - Install Bundler: gem install bundler"
     fi
     if ! ls *.xcodeproj &> /dev/null; then
-        echo "  - Create Xcode project (see DEPLOYMENT_GUIDE.md)"
+        echo "  - Create Xcode project (see SETUP_GUIDE.md)"
     fi
     exit 1
 fi
