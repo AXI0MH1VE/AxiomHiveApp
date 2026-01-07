@@ -156,8 +156,12 @@ fi
 echo ""
 echo "Checking Xcode project..."
 PROJECT_NAME=$(ls -d *.xcodeproj 2>/dev/null | head -n1)
+PROJECT_COUNT=$(ls -d *.xcodeproj 2>/dev/null | wc -l)
 if [ -n "$PROJECT_NAME" ]; then
     check "Xcode project exists: $PROJECT_NAME"
+    if [ "$PROJECT_COUNT" -gt 1 ]; then
+        echo -e "${YELLOW}⚠${NC}  Warning: Multiple Xcode projects found. Using: $PROJECT_NAME"
+    fi
 else
     check "Xcode project missing (*.xcodeproj)"
     echo -e "${YELLOW}ℹ${NC}  Note: Xcode project file is required for Fastlane and CI/CD"

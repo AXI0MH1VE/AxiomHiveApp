@@ -119,6 +119,7 @@ Configure these in **Settings → Secrets and variables → Actions**:
 
 ## 📚 Documentation
 
+- [Setup Guide](SETUP_GUIDE.md) - Step-by-step setup instructions
 - [Deployment Guide](DEPLOYMENT_GUIDE.md) - Complete deployment instructions
 - [Implementation Summary](IMPLEMENTATION_SUMMARY.md) - Technical details
 - [CI/CD Workflow](.github/workflows/ci-cd.yml) - Automation configuration
