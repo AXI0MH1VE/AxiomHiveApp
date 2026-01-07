@@ -1,0 +1,111 @@
+name: AxiomHiveApp
+options:
+  bundleIdPrefix: com.axiomhive
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+  xcodeVersion: "15.2"
+  
+packages:
+  # No external packages - using only native frameworks
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    PRODUCT_NAME: "$(TARGET_NAME)"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    ENABLE_BITCODE: NO
+    SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: "" # Set your Apple Developer Team ID here or in Xcode
+    
+targets:
+  AxiomHiveApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: AxiomHiveApp
+        excludes:
+          - "Resources/Assets.xcassets"
+          - "Resources/Info.plist"
+    resources:
+      - AxiomHiveApp/Resources/Assets.xcassets
+    info:
+      path: AxiomHiveApp/Resources/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleDisplayName: "Axiom Hive"
+        CFBundleExecutable: "$(EXECUTABLE_NAME)"
+        CFBundleIdentifier: "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        CFBundleInfoDictionaryVersion: "6.0"
+        CFBundleName: "$(PRODUCT_NAME)"
+        CFBundlePackageType: "$(PRODUCT_BUNDLE_PACKAGE_TYPE)"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSRequiresIPhoneOS: true
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIApplicationSupportsIndirectInputEvents: true
+        UILaunchScreen: {}
+        UIRequiredDeviceCapabilities:
+          - armv7
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.app
+        INFOPLIST_FILE: AxiomHiveApp/Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: true
+        SWIFT_EMIT_LOC_STRINGS: true
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+    scheme:
+      testTargets:
+        - AxiomHiveAppTests
+      gatherCoverageData: true
+      
+  AxiomHiveAppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - AxiomHiveAppTests
+    dependencies:
+      - target: AxiomHiveApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.axiomhive.app.tests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/AxiomHiveApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AxiomHiveApp"
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+
+schemes:
+  AxiomHiveApp:
+    build:
+      targets:
+        AxiomHiveApp: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - AxiomHiveAppTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

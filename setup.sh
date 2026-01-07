@@ -4,6 +4,12 @@
 
 set -e
 
+# Parse command line arguments
+NON_INTERACTIVE=false
+if [[ "$1" == "--non-interactive" || "$1" == "-n" ]]; then
+    NON_INTERACTIVE=true
+fi
+
 echo "🚀 AxiomHiveApp Deployment Setup"
 echo "=================================="
 echo ""
@@ -28,11 +34,21 @@ FAILED_CHECKS=0
 
 # Check 1: Xcode version
 echo "Checking Xcode version..."
-XCODE_VERSION=$(xcodebuild -version 2>/dev/null | head -n1 | cut -d' ' -f2)
-if [[ $(echo "$XCODE_VERSION >= 15.0" | bc -l) ]]; then
-    check "Xcode $XCODE_VERSION installed"
+if command -v xcodebuild &> /dev/null; then
+    XCODE_VERSION=$(xcodebuild -version 2>/dev/null | head -n1 | cut -d' ' -f2)
+    if [ -n "$XCODE_VERSION" ]; then
+        # Extract major version (e.g., 15 from 15.2)
+        XCODE_MAJOR=$(echo "$XCODE_VERSION" | cut -d'.' -f1)
+        if [ "$XCODE_MAJOR" -ge 15 ] 2>/dev/null; then
+            check "Xcode $XCODE_VERSION installed"
+        else
+            check "Xcode 15+ required (found $XCODE_VERSION)"
+        fi
+    else
+        check "Xcode version could not be determined"
+    fi
 else
-    check "Xcode 15+ required (found $XCODE_VERSION)"
+    check "Xcode not found (required for iOS development)"
 fi
 
 # Check 2: SwiftLint
@@ -53,9 +69,27 @@ if command -v ruby &> /dev/null; then
     check "Ruby $RUBY_VERSION installed"
     
     if command -v bundle &> /dev/null; then
-        check "Bundler installed"
+        BUNDLER_VERSION=$(bundle --version | cut -d' ' -f3)
+        check "Bundler $BUNDLER_VERSION installed"
     else
-        check "Bundler not found (install with: gem install bundler)"
+        if [ "$NON_INTERACTIVE" = false ]; then
+            echo -e "${YELLOW}⚠${NC} Bundler not found"
+            echo -e "${YELLOW}Would you like to install Bundler now? (y/n)${NC}"
+            read -r INSTALL_BUNDLER
+            if [[ "$INSTALL_BUNDLER" =~ ^[Yy]$ ]]; then
+                echo "Installing Bundler..."
+                if gem install bundler; then
+                    BUNDLER_VERSION=$(bundle --version | cut -d' ' -f3)
+                    check "Bundler $BUNDLER_VERSION installed"
+                else
+                    check "Failed to install Bundler"
+                fi
+            else
+                check "Bundler not found (install with: gem install bundler)"
+            fi
+        else
+            check "Bundler not found (install with: gem install bundler)"
+        fi
     fi
 else
     check "Ruby not found"
@@ -118,7 +152,23 @@ else
     check "Matchfile missing"
 fi
 
-# Check 8: GitHub Actions workflow
+# Check 8: Xcode project
+echo ""
+echo "Checking Xcode project..."
+XCODE_PROJECTS=$(ls -d *.xcodeproj 2>/dev/null)
+PROJECT_NAME=$(echo "$XCODE_PROJECTS" | head -n1)
+PROJECT_COUNT=$(echo "$XCODE_PROJECTS" | grep -c . || echo 0)
+if [ -n "$PROJECT_NAME" ]; then
+    check "Xcode project exists: $PROJECT_NAME"
+    if [ "$PROJECT_COUNT" -gt 1 ]; then
+        echo -e "${YELLOW}⚠${NC}  Warning: Multiple Xcode projects found. Using: $PROJECT_NAME"
+    fi
+else
+    check "Xcode project missing (*.xcodeproj)"
+    echo -e "${YELLOW}ℹ${NC}  Note: Xcode project file is required for Fastlane and CI/CD"
+fi
+
+# Check 9: GitHub Actions workflow
 echo ""
 echo "Checking CI/CD configuration..."
 if [ -f ".github/workflows/ci-cd.yml" ]; then
@@ -142,5 +192,19 @@ else
     echo -e "${RED}❌ $FAILED_CHECKS check(s) failed${NC}"
     echo ""
     echo "Please resolve the issues above before proceeding."
+    echo ""
+    echo "Common fixes:"
+    if ! command -v xcodebuild &> /dev/null; then
+        echo "  - Install Xcode from Mac App Store"
+    fi
+    if ! command -v swiftlint &> /dev/null; then
+        echo "  - Install SwiftLint: brew install swiftlint"
+    fi
+    if ! command -v bundle &> /dev/null; then
+        echo "  - Install Bundler: gem install bundler"
+    fi
+    if [ -z "$PROJECT_NAME" ]; then
+        echo "  - Create Xcode project (see SETUP_GUIDE.md)"
+    fi
     exit 1
 fi
