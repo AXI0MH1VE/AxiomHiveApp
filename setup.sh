@@ -155,8 +155,9 @@ fi
 # Check 8: Xcode project
 echo ""
 echo "Checking Xcode project..."
-PROJECT_NAME=$(ls -d *.xcodeproj 2>/dev/null | head -n1)
-PROJECT_COUNT=$(ls -d *.xcodeproj 2>/dev/null | wc -l)
+XCODE_PROJECTS=$(ls -d *.xcodeproj 2>/dev/null)
+PROJECT_NAME=$(echo "$XCODE_PROJECTS" | head -n1)
+PROJECT_COUNT=$(echo "$XCODE_PROJECTS" | grep -c . || echo 0)
 if [ -n "$PROJECT_NAME" ]; then
     check "Xcode project exists: $PROJECT_NAME"
     if [ "$PROJECT_COUNT" -gt 1 ]; then
