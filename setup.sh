@@ -72,19 +72,23 @@ if command -v ruby &> /dev/null; then
         BUNDLER_VERSION=$(bundle --version | cut -d' ' -f3)
         check "Bundler $BUNDLER_VERSION installed"
     else
-        check "Bundler not found (install with: gem install bundler)"
         if [ "$NON_INTERACTIVE" = false ]; then
+            echo -e "${YELLOW}⚠${NC} Bundler not found"
             echo -e "${YELLOW}Would you like to install Bundler now? (y/n)${NC}"
             read -r INSTALL_BUNDLER
             if [[ "$INSTALL_BUNDLER" =~ ^[Yy]$ ]]; then
                 echo "Installing Bundler..."
                 if gem install bundler; then
-                    echo -e "${GREEN}✓${NC} Bundler installed successfully"
-                    FAILED_CHECKS=$((FAILED_CHECKS - 1))  # Revert the failed check
+                    BUNDLER_VERSION=$(bundle --version | cut -d' ' -f3)
+                    check "Bundler $BUNDLER_VERSION installed"
                 else
-                    echo -e "${RED}✗${NC} Failed to install Bundler"
+                    check "Failed to install Bundler"
                 fi
+            else
+                check "Bundler not found (install with: gem install bundler)"
             fi
+        else
+            check "Bundler not found (install with: gem install bundler)"
         fi
     fi
 else
@@ -151,8 +155,8 @@ fi
 # Check 8: Xcode project
 echo ""
 echo "Checking Xcode project..."
-if ls *.xcodeproj &> /dev/null; then
-    PROJECT_NAME=$(ls -d *.xcodeproj | head -n1)
+PROJECT_NAME=$(ls -d *.xcodeproj 2>/dev/null | head -n1)
+if [ -n "$PROJECT_NAME" ]; then
     check "Xcode project exists: $PROJECT_NAME"
 else
     check "Xcode project missing (*.xcodeproj)"
@@ -194,7 +198,7 @@ else
     if ! command -v bundle &> /dev/null; then
         echo "  - Install Bundler: gem install bundler"
     fi
-    if ! ls *.xcodeproj &> /dev/null; then
+    if [ -z "$PROJECT_NAME" ]; then
         echo "  - Create Xcode project (see SETUP_GUIDE.md)"
     fi
     exit 1
