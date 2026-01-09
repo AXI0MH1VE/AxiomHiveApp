@@ -1,0 +1,178 @@
+================================================================================
+                          COPYRIGHT & INTELLECTUAL PROPERTY
+================================================================================
+
+Copyright © 2024-2026 Axiom Hive & Alexis Adams
+
+All Rights Reserved.
+
+================================================================================
+OWNERSHIP & ATTRIBUTION
+================================================================================
+
+This repository, including all source code, documentation, architectures,
+frameworks, methodologies, and intellectual property contained herein, is the
+exclusive property of:
+
+  Axiom Hive
+  Created & Maintained by: Alexis Adams
+  Location: South Beach, Miami, FL, USA
+  Contact: devdollzai@gmail.com
+
+All content is created and owned solely by Alexis Adams and Axiom Hive unless
+otherwise explicitly stated with proper attribution to third-party creators.
+
+================================================================================
+PERMITTED USE
+================================================================================
+
+This source code is provided under the MIT License for:
+✓ Educational and research purposes
+✓ Personal use and review
+✓ Authorized collaborators only (with written permission)
+✓ Contribution via pull requests (subject to Axiom Hive approval)
+
+================================================================================
+PROHIBITED USE
+================================================================================
+
+WITHOUT EXPLICIT WRITTEN PERMISSION FROM AXIOM HIVE, you may NOT:
+
+✗ Claim ownership or authorship of this work
+✗ Use this work for commercial purposes without authorization
+✗ Redistribute this work in whole or in part
+✗ Create derivative works for public distribution
+✗ Copy proprietary methodologies or architectural patterns
+✗ Reverse-engineer or extract trade secrets
+✗ Use deterministic AI systems, agents, or protocols without licensing
+✗ Implement AXIOMCORE, DHMSA, ADAMANT-DAG, or Sigil Engine without authorization
+✗ Clone, mirror, or replicate this repository's structure/content
+
+================================================================================
+INTELLECTUAL PROPERTY STATEMENT
+================================================================================
+
+Axiom Hive asserts intellectual property rights to:
+
+1. PROPRIETARY SYSTEMS:
+   • AxiomHive Deterministic AI Architecture
+   • AXIOMCORE Protocol & Chat Engine
+   • DHMSA (Deterministic Hybrid Modular Systems Architecture)
+   • ADAMANT-DAG (Deterministic AI Verification Engine)
+   • Sovereign Cognitive Topography Framework
+   • Sigil Engine (Autonomous AI Agent System)
+
+2. ARCHITECTURAL INNOVATIONS:
+   • Zero-Entropy AI Logic Systems
+   • Deterministic Reasoning Frameworks
+   • Hybrid Symbolic-Neural Architectures
+   • Multi-Agent Orchestration Protocols
+   • Cryptographic Integrity Lock Systems
+
+3. TRADE SECRETS:
+   • System design methodologies
+   • Performance optimization techniques
+   • Security & compliance frameworks
+   • Agent behavioral logic systems
+   • Control surface implementations
+
+4. TRADEMARKS & BRANDS:
+   • "Axiom Hive"
+   • "AxiomHiveApp"
+   • "AXIOMCORE"
+   • "Deterministic AI by Axiom Hive"
+   • Related logos, designs, and branding
+
+================================================================================
+ENFORCEMENT & LEGAL NOTICE
+================================================================================
+
+Unauthorized use of this repository, its code, methodologies, or intellectual
+property will result in:
+
+1. IMMEDIATE LEGAL ACTION:
+   - Cease & desist orders
+   - DMCA takedown notices
+   - Copyright infringement lawsuits
+   - Trade secret misappropriation claims
+   - Damages up to $150,000 per violation (17 U.S.C. § 504(c))
+
+2. DOCUMENTATION:
+   - All unauthorized uses are monitored and logged
+   - Timestamps and access records maintained
+   - Evidence preserved for legal proceedings
+   - Reports filed with GitHub, ISPs, and law enforcement
+
+3. REMEDIES SOUGHT:
+   - Injunctive relief
+   - Monetary damages
+   - Attorney fees & court costs
+   - Disgorgement of profits
+   - Enhanced penalties for willful infringement
+
+================================================================================
+THIRD-PARTY LICENSES & ATTRIBUTION
+================================================================================
+
+Where applicable, this project includes third-party libraries and components
+licensed under MIT, Apache 2.0, GPL, and other open-source licenses.
+
+Each license is respected and third-party work is clearly attributed.
+See individual LICENSE files and documentation for details.
+
+================================================================================
+MODIFICATIONS & DERIVATIVE WORKS
+================================================================================
+
+If you contribute to this project (via pull requests or authorized collaboration):
+
+✓ Your contributions become property of Axiom Hive
+✓ Axiom Hive retains the right to use, modify, and commercialize your work
+✓ Attribution may be provided in CONTRIBUTORS.md at Axiom Hive's discretion
+✓ You retain the right to reference your contribution for portfolio purposes
+
+================================================================================
+GITHUB & REPOSITORY HOSTING
+================================================================================
+
+This repository is hosted on GitHub under Axiom Hive's account (AXI0MH1VE).
+
+GitHub's Terms of Service and Axiom Hive's Copyright notice supersede any
+default GitHub licensing assumptions. Cloning ≠ permission to use.
+
+================================================================================
+EFFECTIVE DATE & UPDATES
+================================================================================
+
+This copyright notice is effective as of January 1, 2024 and applies
+retroactively to all prior work under Axiom Hive.
+
+This notice may be updated at any time without notice.
+Last Updated: January 9, 2026
+
+================================================================================
+CONTACT & LICENSING INQUIRIES
+================================================================================
+
+For licensing, collaboration, or permission requests, contact:
+
+Email: devdollzai@gmail.com
+GitHub: https://github.com/AXI0MH1VE
+X/Twitter: @devdollzai
+Website: https://axiomhive.io (when deployed)
+
+================================================================================
+SIGNATURE & TESTIMONY
+================================================================================
+
+By accessing, cloning, or using this repository, you acknowledge that:
+✓ You have read and understood this copyright notice
+✓ You agree to comply with all restrictions
+✓ You understand the legal consequences of unauthorized use
+✓ You agree to Axiom Hive's exclusive ownership of this work
+
+Created and authorized by: Alexis Adams, Founder & Creator, Axiom Hive
+Date: January 9, 2026
+Location: Miami, Florida, USA
+
+================================================================================
